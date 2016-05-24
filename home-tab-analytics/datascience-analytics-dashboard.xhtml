@@ -19,6 +19,7 @@
     }
 
     paper-card {
+      /* The fixed width and height make the UI consistent across screen sizes. */
       margin: 3px;
       text-align: center;
       height: 400px;
@@ -26,11 +27,13 @@
     }
 
     .with-data-table {
+      /* If a `paper-card` contains a data-table, make the font stand out more. */
       --paper-card-content: {
         font-weight: bold;
         font-size: initial;
       }
     }
+    /* I don't know what most of these chart classes do but the charts won't render without them. */
 
     chart-bar,
     chart-line,
@@ -67,6 +70,7 @@
       padding: 3px;
       border-radius: 3px;
     }
+    /* The following colors are used so as to have varying header colors on the widets. */
 
     .dashboard-widget-header-01 {
       --paper-card-header-color: white;
@@ -97,12 +101,14 @@
     }
 
     .dateContainer {
+      /* This container DIV is used to vertically align the data filter elements. */
       line-height: 35px;
       padding-left: 3px;
       margin-bottom: 5px;
     }
 
     .dateLabel {
+      /* Nuxeo's CSS will make the fonts pretty small, so use `initial` */
       font-size: initial;
       font-weight: bold;
     }
@@ -115,6 +121,7 @@
     }
 
     .dashboardWidgets {
+      /* This allows the widgets to flow left-to-right then top-to-bottom. */
       display: inline-flex;
       width: 100%;
       flex-wrap: wrap;
@@ -187,8 +194,8 @@
           class="dashboard-widget-header-02"
           elevation="2">
         <div class="card-content">
-          <chart-pie values="[[_values(mostUsedDatasets)]]"
-              series="[[_series(mostUsedDatasets)]]"
+          <chart-pie values="[[_valuesFromIds(mostUsedDatasets)]]"
+              series="[[_seriesFromIds(mostUsedDatasets)]]"
               colors="[[colors]]"
               options='{"responsive": true, "animation": false}'>
           </chart-pie>
@@ -206,8 +213,8 @@
           class="dashboard-widget-header-02"
           elevation="2">
         <div class="card-content">
-          <chart-pie values="[[_values(mostUsedDatasources)]]"
-              series="[[_series(mostUsedDatasources)]]"
+          <chart-pie values="[[_valuesFromIds(mostUsedDatasources)]]"
+              series="[[_seriesFromIds(mostUsedDatasources)]]"
               colors="[[colors]]"
               options='{"responsive": true, "animation": false}'>
           </chart-pie>
@@ -302,12 +309,20 @@
     var currentDate = moment();
     t.endDate = currentDate.format("YYYY-MM-DD");
     t.startDate = currentDate.subtract(1, 'months').format("YYYY-MM-DD");
+
+    /**
+     * `nuxeo-repository-data` expects an object for the `where` attribute.
+     */
     t._lifeCycleState = function(state) {
       return {
         'ecm:currentLifeCycleState': state
       }
     };
 
+    /**
+     * Copied from nuxeo-chart-data-behavior.
+     * https://github.com/nuxeo/nuxeo/blob/master/nuxeo-features/nuxeo-admin-center/nuxeo-admin-center-analytics/src/main/elements/nuxeo-chart-data-behavior/nuxeo-chart-data-behavior.html
+     */
     t._labels = function(data) {
       return data.map(function(entry) {
         if (Array.isArray(entry.value)) {
@@ -318,12 +333,20 @@
       });
     };
 
+    /**
+     * Copied from nuxeo-chart-data-behavior.
+     * https://github.com/nuxeo/nuxeo/blob/master/nuxeo-features/nuxeo-admin-center/nuxeo-admin-center-analytics/src/main/elements/nuxeo-chart-data-behavior/nuxeo-chart-data-behavior.html
+     */
     t._series = function(data) {
       return data.map(function(obj) {
         return obj.key;
       })
     };
 
+    /**
+     * Copied from nuxeo-chart-data-behavior.
+     * https://github.com/nuxeo/nuxeo/blob/master/nuxeo-features/nuxeo-admin-center/nuxeo-admin-center-analytics/src/main/elements/nuxeo-chart-data-behavior/nuxeo-chart-data-behavior.html
+     */
     t._values = function(data) {
       return [data.map(function(entry) {
         if (Array.isArray(entry.value)) {
@@ -332,6 +355,33 @@
           return entry.value;
         }
       })];
+    };
+
+    /**
+     * Some of the above queries will return document ids. For the UI I
+     * generally want to display the Title, not the uuid.
+     */
+    t._idsToNames = function(data, target) {
+      return data.map(function(id) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "api/v1/id/" + id.key, false);
+        xhr.send();
+
+        return {
+          "key": JSON.parse(xhr.responseText).title,
+          "value": id.value
+        };
+      });
+    };
+
+    t._valuesFromIds = function(data) {
+      data = this._idsToNames(data);
+      return this._values(data);
+    };
+
+    t._seriesFromIds = function(data) {
+      data = this._idsToNames(data);
+      return this._series(data);
     };
   </script>
 
