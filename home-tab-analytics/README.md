@@ -16,30 +16,38 @@ Install `xml-extension.xml` as an XML Extension.
 
 Note that the dashboard expects certain document types and configuration so it may need to be adapted to your project (see below for details).
 
-## Notes & Limitations
-
-The dashboard is a single page that contains all CSS, HTML, and JavaScript necessary to perform its function. Thus it is at risk of becoming a monolithic, hard-to-maintain single file. For a simple application like this the convenience of being able to add the dashboard via Nuxeo Studio outweighs the disadvantages of having a single file to maintain.
-
-Google recommends that the main document in a Polymer application **not** be itself a Web component. As such the dashboard in this example somewhat limited in what it can do with the Web components that it contains. Styling works as expected, as well as binding. The main limitation is that the dashboard cannot take advantage of [behaviors](https://www.polymer-project.org/1.0/docs/devguide/behaviors).  In particular the dashboard has implemented the functions from [nuxeo-chart-data-behavior](https://github.com/nuxeo/nuxeo/blob/master/nuxeo-features/nuxeo-admin-center/nuxeo-admin-center-analytics/src/main/elements/nuxeo-chart-data-behavior/nuxeo-chart-data-behavior.html) in order to be able to use [nuxeo-chart-elements](https://github.com/nuxeo/chart-elements). Had the dashboard been a Web component, it could have inherited the behavior and this means it will not take advantage of improvements or bug fixes in `nuxeo-chart-data-behavior` other than via manual update.
-
-## Metrics
-
-The dashboard reports the following metrics:
-
-*
+## Model
 
 The dashboard expects the following document types to be available:
 
-Module | Description
---- | ---
-`home-tab-analytics` | Data Visualization example to add an analytics dashboard to the `HOME` tab.
-`json-pretty-print` | Custom widget to display JSON text with pretty printing and colorization.
-`listing-icon-both-types` | Display both the document-type and binary-type icon in a list view.
-`pdf-preview-widget` | A widget that uses the [pdf.js](https://mozilla.github.io/pdf.js/) preview widget to display document previews.
+* Report
+* Dataset
+* Datasource
+* Notebook
 
-## Building
+The dashboard expects the following lifecycle states to be available:
 
-There is nothing to build. Each module generally has a custom template or XML Extension that you may add via Nuxeo Studio.
+* accepted
+* rejected
+
+It can be adapted of course. Modify the `nuxeo-repository-data` elements as needed to fetch the data you want.
+
+## Development
+
+Development is best accomplished in the following fashion:
+
+* Add the files to Studio
+* Deploy the Studio project
+* Make changes to the files in `nuxeo.war` until a milestone is achieved; thus you can simply refresh the browser to test the changes
+* Copy the modifications back to Studio
+
+In this way it's very easy to test and make changes quickly. Note that if you redeploy the Studio project, or restart the server, any local changes in `nuxeo.war` will be lost.
+
+## Notes & Limitations
+
+The dashboard is a single page that contains all CSS, HTML, and JavaScript necessary to perform its function. Thus it is at risk of becoming a monolithic, hard-to-maintain single file. For a simple dashboard like this the convenience of being able to add the layout via Nuxeo Studio outweighs the disadvantages of having a single file to maintain.
+
+[Google recommends](https://www.polymer-project.org/1.0/docs/devguide/registering-elements#main-document-definitions) that the main document in a Polymer application **not** define elements. As such the dashboard in this example somewhat limited in what it can do with the Web components that it contains. Styling works as expected, as well as binding. The main limitation is that the dashboard cannot take advantage of [behaviors](https://www.polymer-project.org/1.0/docs/devguide/behaviors) and [observers](https://www.polymer-project.org/1.0/docs/devguide/properties#change-callbacks). In particular the dashboard has implemented the functions from [nuxeo-chart-data-behavior](https://github.com/nuxeo/nuxeo/blob/master/nuxeo-features/nuxeo-admin-center/nuxeo-admin-center-analytics/src/main/elements/nuxeo-chart-data-behavior/nuxeo-chart-data-behavior.html) in order to be able to use [nuxeo-chart-elements](https://github.com/nuxeo/chart-elements). Had the dashboard been a Web component, it could have inherited the behavior and therefore taken advantage of improvements or bug fixes in `nuxeo-chart-data-behavior` over time.
 
 ## Support
 
@@ -49,11 +57,9 @@ These solutions are provided for inspiration and we encourage customers to use t
 
 This is a moving project (no API maintenance, no deprecation process, etc.) If any of these solutions are found to be useful for the Nuxeo Platform in general, they will be integrated directly into platform, not maintained here.
 
-
 ## Licensing
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
 
 ## About Nuxeo
 
