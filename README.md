@@ -2,11 +2,11 @@
 
 This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/).
 
-# Contributing
+## Contributing
 
 Each new module should be created in a new folder. You should include a readme with your module to explain how it works. You should update this file with a one sentence explanation of the module.
 
-# Sub-Module Organization
+## Sub-Module Organization
 
 Module | Description
 --- | ---
