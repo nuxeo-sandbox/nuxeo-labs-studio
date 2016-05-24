@@ -1,0 +1,12 @@
+<f:subview
+      xmlns:f="http://java.sun.com/jsf/core"
+      id="#{widget.id}">
+
+  <iframe
+        width="100%"
+        height="600"
+        frameborder="0"
+        style="border:0"
+        src = "#{baseURL}viewer/web/viewer.html?file=#{baseURL}api/v1/id/#{currentDocument.id}/@blob/blobholder:0#{conversionActions.isPDF(currentDocumentAsBlobHolder)?'':'/@convert?format%3Dpdf'}">
+  </iframe>
+</f:subview>
