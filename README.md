@@ -9,7 +9,7 @@ Each new module should be created in a new folder. You should include a readme w
 # Sub-Module Organization
 
 Module | Description
--- | --
+--- | ---
 `home-tab-analytics` | Data Visualization example to add an analytics dashboard to the `HOME` tab.
 `json-pretty-print` | Custom widget to display JSON text with pretty printing and colorization.
 `listing-icon-both-types` | Display both the document-type and binary-type icon in a list view.
