@@ -1,0 +1,60 @@
+<c:if test="true"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:nxu="http://nuxeo.org/nxweb/util"
+    xmlns:nxd="http://nuxeo.org/nxweb/document"
+    xmlns:nxl="http://nuxeo.org/nxforms/layout"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:nxp="http://nuxeo.org/nxweb/pdf"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <ui:remove>
+    <!-- By default Nuxeo will display the icon returned by the Type
+    service for a document in a Content View when you have the icon
+    column. If the document has no binary, the document type icon is
+    displayed. But if there is a binary, the icon for the binary is
+    displayed. For this demo we decided to show the doc type icon in all
+    cases and display the binary icon only if it exists. It's a quick
+    way for the user to distinguish the file type used in a listing of
+    various entities. Note that this contribution overrides the icon
+    behavior for everything, not just our custom types. -->
+  </ui:remove>
+
+  <nxu:set var="typeLabel"
+      value="#{nxd:typeLabel(field)}">
+    <nxu:set var="label"
+        value="#{empty typeLabel ? messages[field_2] : messages[typeLabel]}">
+      <c:if test="#{nxl:isLikePlainMode(widget.mode)}">#{label}</c:if>
+      <c:if test="#{nxl:isLikeViewMode(widget.mode)}">
+        <div id="docRefTarget:#{field_1}"
+            class="#{nxu:test(field_3, 'nxDropTarget', '')}">
+          <div id="docRef:#{field_1}"
+              class="cell popupTarget nxDraggable"
+              docRef="#{field_1}"
+              style="width: 34px;">
+            <nxu:graphicImage rendered="#{not empty field_0.file.filename}"
+                value="#{nxd:bigIconPath(field_0)}"
+                alt="#{label}"
+                title="#{label}"
+                styleClass="smallIcon" />
+            <nxu:graphicImage value="#{nxd:iconPath(field_0)}"
+                alt="#{label}"
+                title="#{label}"
+                styleClass="smallIcon"
+                style="margin-left: 2px;" />
+          </div>
+        </div>
+      </c:if>
+      <c:if test="#{widget.mode == 'pdf'}">
+        <nxp:html>
+          <nxu:graphicImage value="#{nxd:iconPath(field_0)}"
+              alt="#{label}"
+              title="#{label}"
+              styleClass="smallIcon" />
+        </nxp:html>
+      </c:if>
+    </nxu:set>
+  </nxu:set>
+
+</c:if>

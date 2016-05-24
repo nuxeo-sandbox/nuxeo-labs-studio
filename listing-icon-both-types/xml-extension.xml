@@ -1,0 +1,9 @@
+<require>org.nuxeo.ecm.platform.forms.layout.WebLayoutManager</require>
+
+<extension point="widgettypes" target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager">
+  <widgetType name="listing_icon_type">
+    <property name="template">
+      /widgets/listing_icon_types_widget_template.xhtml
+    </property>
+  </widgetType>
+</extension>
