@@ -1,0 +1,338 @@
+<h:panelGroup layout="block"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:nxr="http://nuxeo.org/nxweb/resources"
+    style="overflow: hidden">
+
+  <h:outputScript src="/bower_components/webcomponentsjs/webcomponents-lite.js"
+      target="" />
+  <h:outputScript src="/bower_components/moment/min/moment-with-locales.min.js"
+      target="" />
+
+  <nxr:import src="/analytics/elements/elements.vulcanized.html"
+      target="" />
+
+  <style is="custom-style">
+    :root {
+      font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #444;
+    }
+
+    paper-card {
+      margin: 3px;
+      text-align: center;
+      height: 400px;
+      width: 500px;
+    }
+
+    .with-data-table {
+      --paper-card-content: {
+        font-weight: bold;
+        font-size: initial;
+      }
+    }
+
+    chart-bar,
+    chart-line,
+    chart-pie {
+      height: 100%;
+      margin: 25px auto 0 auto;
+      width: 100%;
+      display: block;
+      font-size: 0.8em;
+    }
+
+    chart-bar /deep/ .chart-legend ul,
+    chart-pie /deep/ .chart-legend ul,
+    chart-line /deep/ .chart-legend ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    chart-bar /deep/ .chart-legend li,
+    chart-pie /deep/ .chart-legend li,
+    chart-line /deep/ .chart-legend li {
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    chart-bar /deep/ .chart-legend li span,
+    chart-pie /deep/ .chart-legend li span,
+    chart-line /deep/ .chart-legend li span {
+      height: 12px;
+      margin-right: 5px;
+      width: 12px;
+      color: #fff;
+      font-weight: bold;
+      padding: 3px;
+      border-radius: 3px;
+    }
+
+    .dashboard-widget-header-01 {
+      --paper-card-header-color: white;
+      --paper-card-header: {
+        background: #cc0000;
+      }
+    }
+
+    .dashboard-widget-header-02 {
+      --paper-card-header-color: white;
+      --paper-card-header: {
+        background: #007a7a;
+      }
+    }
+
+    .dashboard-widget-header-03 {
+      --paper-card-header-color: white;
+      --paper-card-header: {
+        background: #006400;
+      }
+    }
+
+    .dashboard-widget-header-04 {
+      --paper-card-header-color: white;
+      --paper-card-header: {
+        background: #cc5c00;
+      }
+    }
+
+    .dateContainer {
+      line-height: 35px;
+      padding-left: 3px;
+      margin-bottom: 5px;
+    }
+
+    .dateLabel {
+      font-size: initial;
+      font-weight: bold;
+    }
+
+    .dateInput {
+      display: inline;
+      width: 150px;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .dashboardWidgets {
+      display: inline-flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  </style>
+
+  <template is="dom-bind">
+
+    <!-- Suppoert filtering data by date range. -->
+    <div class="dateContainer">
+      <span class="dateLabel">From </span>
+      <input type="date"
+          value="{{startDate::change}}"
+          class="dateInput"></input>
+      <span style="padding-left: 3px;"
+          class="dateLabel">To </span>
+      <input type="date"
+          value="{{endDate::change}}"
+          class="dateInput"></input>
+    </div>
+
+    <nuxeo-connection url="/nuxeo"></nuxeo-connection>
+
+    <div class="dashboardWidgets">
+
+      <!-- Most approved reports -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Report"
+          data="{{mostApproved}}"
+          grouped-by="dc:creator"
+          where="[[_lifeCycleState('accepted')]]"
+          groupLimit="7">
+      </nuxeo-repository-data>
+      <paper-card heading='Most Approved Reports'
+          class="dashboard-widget-header-01 with-data-table"
+          elevation="2">
+        <div class="card-content">
+          <nuxeo-data-table data="[[mostApproved]]">
+          </nuxeo-data-table>
+        </div>
+      </paper-card>
+
+      <!-- Most rejected reports -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Report"
+          data="{{mostRejected}}"
+          grouped-by="dc:creator"
+          where="[[_lifeCycleState('rejected')]]"
+          groupLimit="7">
+      </nuxeo-repository-data>
+      <paper-card heading='Most Rejected Reports'
+          class="dashboard-widget-header-01 with-data-table"
+          elevation="2">
+        <div class="card-content">
+          <nuxeo-data-table data="[[mostRejected]]">
+          </nuxeo-data-table>
+        </div>
+      </paper-card>
+
+      <!-- Most used Datasets -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Dataset"
+          grouped-by="dataset:parents"
+          data="{{mostUsedDatasets}}">
+      </nuxeo-repository-data>
+      <paper-card heading="Most Used Datasets"
+          class="dashboard-widget-header-02"
+          elevation="2">
+        <div class="card-content">
+          <chart-pie values="[[_values(mostUsedDatasets)]]"
+              series="[[_series(mostUsedDatasets)]]"
+              colors="[[colors]]"
+              options='{"responsive": true, "animation": false}'>
+          </chart-pie>
+        </div>
+      </paper-card>
+
+      <!-- Most used Datasources -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Dataset"
+          grouped-by="dataset:datasources"
+          data="{{mostUsedDatasources}}">
+      </nuxeo-repository-data>
+      <paper-card heading="Most Used Datasources"
+          class="dashboard-widget-header-02"
+          elevation="2">
+        <div class="card-content">
+          <chart-pie values="[[_values(mostUsedDatasources)]]"
+              series="[[_series(mostUsedDatasources)]]"
+              colors="[[colors]]"
+              options='{"responsive": true, "animation": false}'>
+          </chart-pie>
+        </div>
+      </paper-card>
+
+      <!-- Entity Types -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          grouped-by="ecm:primaryType"
+          group-limit="10"
+          data="{{typeCount}}">
+      </nuxeo-repository-data>
+      <paper-card heading="Entity Types"
+          class="dashboard-widget-header-03"
+          elevation="2">
+        <div class="card-content">
+          <chart-pie values="[[_values(typeCount)]]"
+              series="[[_series(typeCount)]]"
+              colors="[[colors]]"
+              options='{"responsive": true, "animation": false}'>
+          </chart-pie>
+        </div>
+      </paper-card>
+
+
+      <!-- Top 10 creators -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          grouped-by="dc:creator"
+          group-limit="10"
+          data="{{topCreators}}">
+      </nuxeo-repository-data>
+      <paper-card heading="Top 10 creators"
+          class="dashboard-widget-header-03"
+          elevation="2">
+        <div class="card-content">
+          <chart-pie values="[[_values(topCreators)]]"
+              series="[[_series(topCreators)]]"
+              colors="[[colors]]"
+              options='{"responsive": true, "animation": false}'>
+          </chart-pie>
+        </div>
+      </paper-card>
+
+      <!-- Entities created per week -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          with-date-intervals="week"
+          date-field="dc:created"
+          data="{{docsCreatedPerWeek}}">
+      </nuxeo-repository-data>
+      <paper-card heading="Entities Created / Week"
+          class="dashboard-widget-header-04"
+          elevation="2">
+        <div class="card-content">
+          <chart-line labels="[[_labels(docsCreatedPerWeek)]]"
+              values="[[_values(docsCreatedPerWeek)]]"
+              options='{"responsive": true, "animation": false, "datasetFill": false}'>
+          </chart-line>
+        </div>
+      </paper-card>
+
+      <!-- Entities modified per week -->
+      <nuxeo-repository-data start-date="[[startDate]]"
+          end-date="[[endDate]]"
+          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          with-date-intervals="week"
+          date-field="dc:modified"
+          data="{{docsModifiedPerWeek}}">
+      </nuxeo-repository-data>
+      <paper-card heading="Entities Modified / Week"
+          class="dashboard-widget-header-04"
+          elevation="2">
+        <div class="card-content">
+          <chart-line labels="[[_labels(docsModifiedPerWeek)]]"
+              values="[[_values(docsModifiedPerWeek)]]"
+              options='{"responsive": true, "animation": false, "datasetFill": false}'>
+          </chart-line>
+        </div>
+      </paper-card>
+
+    </div>
+
+  </template>
+
+  <script>
+    var t = document.querySelector('template');
+    var currentDate = moment();
+    t.endDate = currentDate.format("YYYY-MM-DD");
+    t.startDate = currentDate.subtract(1, 'months').format("YYYY-MM-DD");
+    t._lifeCycleState = function(state) {
+      return {
+        'ecm:currentLifeCycleState': state
+      }
+    };
+
+    t._labels = function(data) {
+      return data.map(function(entry) {
+        if (Array.isArray(entry.value)) {
+          return entry.value.map(this._labels.bind(this));
+        } else {
+          return entry.key;
+        }
+      });
+    };
+
+    t._series = function(data) {
+      return data.map(function(obj) {
+        return obj.key;
+      })
+    };
+
+    t._values = function(data) {
+      return [data.map(function(entry) {
+        if (Array.isArray(entry.value)) {
+          return entry.value.map(this._values.bind(this));
+        } else {
+          return entry.value;
+        }
+      })];
+    };
+  </script>
+
+</h:panelGroup>
