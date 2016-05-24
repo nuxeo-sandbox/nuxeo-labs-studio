@@ -1,18 +1,12 @@
-<?xml version="1.0"?>
+<extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
 
-<component name="org.nuxeo.datascience.analytics" version="1.0">
+    <action id="DatascienceAnalytics" link="/layouts/datascience-analytics-dashboard.xhtml" type="home_rest_document_link" label="Analytics" order="110">
+        <category>USER_CENTER</category>
 
-    <extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
+        <properties>
+            <!-- disable ajax support to avoid multiple calls to document.registerElement -->
+            <property name="ajaxSupport">false</property>
+        </properties>
+    </action>
 
-        <action id="DatascienceAnalytics" link="/layouts/datascience-analytics-dashboard.xhtml" type="home_rest_document_link" label="Analytics" order="110">
-            <category>USER_CENTER</category>
-
-            <properties>
-                <!-- disable ajax support to avoid multiple calls to document.registerElement -->
-                <property name="ajaxSupport">false</property>
-            </properties>
-        </action>
-
-    </extension>
-
-</component>
+</extension>
