@@ -147,16 +147,16 @@
 
     <div class="dashboardWidgets">
 
-      <!-- Most approved reports -->
+      <!-- Most approved Files -->
       <nuxeo-repository-data start-date="[[startDate]]"
           end-date="[[endDate]]"
-          ecm-primary-type="Report"
+          ecm-primary-type="File"
           data="{{mostApproved}}"
           grouped-by="dc:creator"
-          where="[[_lifeCycleState('accepted')]]"
+          where="[[_lifeCycleState('approved')]]"
           groupLimit="7">
       </nuxeo-repository-data>
-      <paper-card heading='Most Approved Reports'
+      <paper-card heading='Users with Most Approved Files'
           class="dashboard-widget-header-01 with-data-table"
           elevation="2">
         <div class="card-content">
@@ -165,66 +165,28 @@
         </div>
       </paper-card>
 
-      <!-- Most rejected reports -->
+      <!-- Most obsolete Files -->
       <nuxeo-repository-data start-date="[[startDate]]"
           end-date="[[endDate]]"
-          ecm-primary-type="Report"
-          data="{{mostRejected}}"
+          ecm-primary-type="File"
+          data="{{mostObsolete}}"
           grouped-by="dc:creator"
-          where="[[_lifeCycleState('rejected')]]"
+          where="[[_lifeCycleState('obsolete')]]"
           groupLimit="7">
       </nuxeo-repository-data>
-      <paper-card heading='Most Rejected Reports'
+      <paper-card heading='Users with Most Obsolete Files'
           class="dashboard-widget-header-01 with-data-table"
           elevation="2">
         <div class="card-content">
-          <nuxeo-data-table data="[[mostRejected]]">
+          <nuxeo-data-table data="[[mostObsolete]]">
           </nuxeo-data-table>
-        </div>
-      </paper-card>
-
-      <!-- Most used Datasets -->
-      <nuxeo-repository-data start-date="[[startDate]]"
-          end-date="[[endDate]]"
-          ecm-primary-type="Dataset"
-          grouped-by="dataset:parents"
-          data="{{mostUsedDatasets}}">
-      </nuxeo-repository-data>
-      <paper-card heading="Most Used Datasets"
-          class="dashboard-widget-header-02"
-          elevation="2">
-        <div class="card-content">
-          <chart-pie values="[[_valuesFromIds(mostUsedDatasets)]]"
-              series="[[_seriesFromIds(mostUsedDatasets)]]"
-              colors="[[colors]]"
-              options='{"responsive": true, "animation": false}'>
-          </chart-pie>
-        </div>
-      </paper-card>
-
-      <!-- Most used Datasources -->
-      <nuxeo-repository-data start-date="[[startDate]]"
-          end-date="[[endDate]]"
-          ecm-primary-type="Dataset"
-          grouped-by="dataset:datasources"
-          data="{{mostUsedDatasources}}">
-      </nuxeo-repository-data>
-      <paper-card heading="Most Used Datasources"
-          class="dashboard-widget-header-02"
-          elevation="2">
-        <div class="card-content">
-          <chart-pie values="[[_valuesFromIds(mostUsedDatasources)]]"
-              series="[[_seriesFromIds(mostUsedDatasources)]]"
-              colors="[[colors]]"
-              options='{"responsive": true, "animation": false}'>
-          </chart-pie>
         </div>
       </paper-card>
 
       <!-- Entity Types -->
       <nuxeo-repository-data start-date="[[startDate]]"
           end-date="[[endDate]]"
-          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          ecm-primary-type="File,Note,Folder,Collection,Workspace"
           grouped-by="ecm:primaryType"
           group-limit="10"
           data="{{typeCount}}">
@@ -245,7 +207,7 @@
       <!-- Top 10 creators -->
       <nuxeo-repository-data start-date="[[startDate]]"
           end-date="[[endDate]]"
-          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          ecm-primary-type="File,Note,Folder,Collection,Workspace"
           grouped-by="dc:creator"
           group-limit="10"
           data="{{topCreators}}">
@@ -262,15 +224,15 @@
         </div>
       </paper-card>
 
-      <!-- Entities created per week -->
+      <!-- Documents created per week -->
       <nuxeo-repository-data start-date="[[startDate]]"
           end-date="[[endDate]]"
-          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          ecm-primary-type="File,Note,Folder,Collection,Workspace"
           with-date-intervals="week"
           date-field="dc:created"
           data="{{docsCreatedPerWeek}}">
       </nuxeo-repository-data>
-      <paper-card heading="Entities Created / Week"
+      <paper-card heading="Documents Created / Week"
           class="dashboard-widget-header-04"
           elevation="2">
         <div class="card-content">
@@ -281,15 +243,15 @@
         </div>
       </paper-card>
 
-      <!-- Entities modified per week -->
+      <!-- Documents modified per week -->
       <nuxeo-repository-data start-date="[[startDate]]"
           end-date="[[endDate]]"
-          ecm-primary-type="Report,Dataset,Datasource,Notebook"
+          ecm-primary-type="File,Note,Folder,Collection,Workspace"
           with-date-intervals="week"
           date-field="dc:modified"
           data="{{docsModifiedPerWeek}}">
       </nuxeo-repository-data>
-      <paper-card heading="Entities Modified / Week"
+      <paper-card heading="Documents Modified / Week"
           class="dashboard-widget-header-04"
           elevation="2">
         <div class="card-content">
@@ -358,7 +320,7 @@
     };
 
     /**
-     * Some of the above queries will return document ids. For the UI I
+     * Some of the above queries may return document ids. For the UI I
      * generally want to display the Title, not the uuid.
      */
     t._idsToNames = function(data, target) {
