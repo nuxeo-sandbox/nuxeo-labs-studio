@@ -10,10 +10,13 @@ Each new module should be created in a new folder. You should include a readme w
 
 Module | Description
 --- | ---
-`home-tab-analytics` | Data Visualization example to add an analytics dashboard to the `HOME` tab.
-`json-pretty-print` | Custom widget to display JSON text with pretty printing and colorization.
-`listing-icon-both-types` | Display both the document-type and binary-type icon in a list view.
-`pdf-preview-widget` | A widget that uses the [pdf.js](https://mozilla.github.io/pdf.js/) preview widget to display document previews.
+`external-header-menu-widget` | A widget designed to display a list of links in the header menu, similar to the user menu, but with links instead of actions in it.
+`external-link-widget` | Widget template for a text field, will display the value as a link in view mode, simple input text in edit mode
+`flash-preview-widget` | Enables to display a flash file (.swf)
+`home-tab-analytics` | Data Visualization example to add an analytics dashboard to the `HOME` tab
+`json-pretty-print` | Custom widget to display JSON text with pretty printing and colorization
+`listing-icon-both-types` | Display both the document-type and binary-type icon in a list view
+`pdf-preview-widget` | A widget that uses the [pdf.js](https://mozilla.github.io/pdf.js/) preview widget to display document previews
 
 ## Building
 
