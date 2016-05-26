@@ -10,27 +10,11 @@ On the other hand if you need to use dependencies that are not part of the Nuxeo
 
 ## Installation
 
-Install `datascience-analytics-dashboard.html` in the `Resources` section of the Nuxeo Studio project as a `Layout` template.
+Install `home-analytics-dashboard.html` in the `Resources` section of the Nuxeo Studio project as a `Layout` template.
 
 Install `xml-extension.xml` as an XML Extension.
 
-Note that the dashboard expects certain document types and configuration so it may need to be adapted to your project (see below for details).
-
-## Model
-
-The dashboard expects the following document types to be available:
-
-* Report
-* Dataset
-* Datasource
-* Notebook
-
-The dashboard expects the following lifecycle states to be available:
-
-* accepted
-* rejected
-
-It can be adapted of course. Modify the `nuxeo-repository-data` elements as needed to fetch the data you want.
+The dashboard is compatible with Nuxeo CAP.
 
 ## Development
 
