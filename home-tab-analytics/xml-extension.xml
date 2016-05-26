@@ -1,6 +1,6 @@
 <extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
 
-    <action id="DatascienceAnalytics" link="/layouts/datascience-analytics-dashboard.xhtml" type="home_rest_document_link" label="Analytics" order="110">
+    <action id="DatascienceAnalytics" link="/layouts/home-analytics-dashboard.xhtml" type="home_rest_document_link" label="Analytics" order="110">
         <category>USER_CENTER</category>
 
         <properties>
