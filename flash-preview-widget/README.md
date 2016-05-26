@@ -4,6 +4,8 @@ Enables to display a flash file (.swf).
 It should be bound to the binary field to display (file:content most of the time).
 Width and height properties can also be set up.
 
+Note that Flash video files (FLV) are already supported by the Video document type. This widget is only for SWF files.
+
 ## Installation
 
 Install `flash-preview-widget.xhtml` in the `Resources` section of the Nuxeo Studio project as a `Widget` template.
