@@ -8,6 +8,8 @@ Width and height properties can also be set up.
 
 Install `flash-preview-widget.xhtml` in the `Resources` section of the Nuxeo Studio project as a `Widget` template.
 
+You may wish to enable the widget only if the bincary content is Flash. You can do that with `#{layoutValue.file.content.mimeType == 'application/x-shockwave-flash'?'view':'hidden'}` in the Advanced Settings for the widget.
+
 ## Support
 
 **These features are not part of the Nuxeo Production platform.**
