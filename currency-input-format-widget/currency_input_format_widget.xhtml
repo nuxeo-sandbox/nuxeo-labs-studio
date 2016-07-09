@@ -2,7 +2,8 @@
   xmlns:f="http://java.sun.com/jsf/core"
   xmlns:nxh="http://nuxeo.org/nxweb/html"
   xmlns:h="http://java.sun.com/jsf/html">
-	<h:inputText value="#{field}">
+	<h:inputText id="#{widget.id}_currencyInput" value="#{field}">
        <f:convertNumber type="number" pattern="#,##0.00;(#,##0.00)" groupingUsed="true" maxFractionDigits="2"/>
     </h:inputText>
+    <h:message styleClass="errorMessage" for="#{widget.id}_currencyInput" />
 </f:subview>
