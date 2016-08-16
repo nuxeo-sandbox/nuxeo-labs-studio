@@ -1,0 +1,13 @@
+<!-- This action will reset the sort back to default on content views. -->
+<extension point="actions" target="org.nuxeo.ecm.platform.actions.ActionService">
+
+  <action id="totalDocuments" label="Total Documents" order="-10" type="template">
+    <category>CONTENT_VIEW_ACTIONS</category>
+    <properties>
+      <property name="template">
+        /widgets/content-view-count-widget.xhtml
+      </property>
+    </properties>
+  </action>
+
+</extension>
