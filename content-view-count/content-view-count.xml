@@ -1,4 +1,4 @@
-<!-- This action will reset the sort back to default on content views. -->
+<!-- This action will display the result count for all Content Views. -->
 <extension point="actions" target="org.nuxeo.ecm.platform.actions.ActionService">
 
   <action id="totalDocuments" label="Total Documents" order="-10" type="template">
