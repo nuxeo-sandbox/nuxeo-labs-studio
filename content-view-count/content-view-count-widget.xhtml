@@ -1,0 +1,13 @@
+<f:subview xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+  <style>
+    .count[count^="-"],.count[count="0"] {
+      display: none;
+    }
+  </style>
+
+  <div class="count label"
+      count="#{contentView.getCurrentPageProvider().getResultsCount()}">Total Items: #{contentView.getCurrentPageProvider().getResultsCount()}</div>
+
+</f:subview>
