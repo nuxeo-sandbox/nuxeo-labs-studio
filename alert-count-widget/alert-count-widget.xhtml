@@ -1,0 +1,19 @@
+<h:panelGroup layout="block"
+    style="display: inline-block; margin-left: 10px;"
+    xmlns:h="http://java.sun.com/jsf/html">
+
+  <style>
+    .count[count^="-"],
+    .count[count="0"] {
+      display: none;
+    }
+  </style>
+
+  <a href="#{baseURL}nxpath/default/default-domain/Alerts@view_documents">
+    <span class="count label label-error"
+        count="#{operationActionBean.doOperation('GetAlertCount')}">
+      Alerts #{operationActionBean.doOperation("GetAlertCount")}
+    </span>
+  </a>
+
+</h:panelGroup>

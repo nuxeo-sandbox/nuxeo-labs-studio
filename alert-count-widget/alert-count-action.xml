@@ -1,0 +1,13 @@
+<!-- This action will an Alert count with a link to the Alerts folder. -->
+<extension point="actions" target="org.nuxeo.ecm.platform.actions.ActionService">
+
+  <action id="Alerts" label="Alerts" order="1000" type="template">
+    <category>USER_SERVICES</category>
+    <properties>
+      <property name="template">
+        /widgets/alert-count-widget.xhtml
+      </property>
+    </properties>
+  </action>
+
+</extension>
