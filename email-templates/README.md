@@ -6,8 +6,8 @@ Improved email templates for Nuxeo Studio.
 
 Preview | id | Theme | Comments
 --- | --- | ---
-![Light](images/light.png) |workflowTaskAssigned | light | Logo image comes from github
-![Dark](images/dark.png) |workflowTaskAssigned | dark | Logo image comes from github
+![Light](images/light.png) | workflowTaskAssigned | light | Logo image comes from github
+![Dark](images/dark.png) | workflowTaskAssigned | dark | Logo image comes from github
 
 ## Installation
 
