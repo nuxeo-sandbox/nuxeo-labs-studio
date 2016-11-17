@@ -1,0 +1,23 @@
+<extension point="actions" target="org.nuxeo.ecm.platform.actions.ActionService">
+  <action id="slider" label="slider" order="-10" type="template">
+    <category>CONTENT_VIEW_ACTIONS</category>
+    <properties>
+      <property name="template">
+        /widgets/thumbnail_size_slider.xhtml
+      </property>
+    </properties>
+    <filter-id>contentViewShowSlider</filter-id>
+  </action>
+</extension>
+
+<extension point="filters" target="org.nuxeo.ecm.platform.actions.ActionService">
+  <filter id="contentViewShowSlider">
+      <rule grant="true">
+        <condition>
+          #{nxu:test(empty showEditRows,
+          contentView.currentResultLayout.showEditRows,
+          showEditRows)}
+        </condition>
+      </rule>
+    </filter>
+</extension>

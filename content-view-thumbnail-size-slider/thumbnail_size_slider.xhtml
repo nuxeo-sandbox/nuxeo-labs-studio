@@ -1,0 +1,26 @@
+<f:subview xmlns:f="http://java.sun.com/jsf/core">
+  <script type="text/javascript">
+	//<![CDATA[
+		function thumbnailsSliderChanged(newValue) {
+			localStorage.setItem('thumbnailSilder', newValue);
+			var thumbnailHeight, containerWidth;
+			jQuery(".bubbleBox.bubbleListing").css("width", "" + newValue + "em");
+			// I noticed the hieght of the image is 2/3 the width of the wontainer
+			containerWidth = parseInt(newValue);
+			thumbnailHeight = Math.round( (2 * containerWidth) / 3 );
+			jQuery(".thumbnailContainer").css("height", "" + thumbnailHeight + "em");
+		}
+
+        jQuery(document).ready(function () {
+            if(localStorage.getItem("thumbnailSilder")!==undefined) {
+                jQuery('#thumbnailSlider').val(localStorage.getItem("thumbnailSilder"));
+				thumbnailsSliderChanged(localStorage.getItem("thumbnailSilder"));
+            } else {
+			    thumbnailsSliderChanged(4);
+			}
+        });
+
+	//]]>
+	</script>
+    <input id='thumbnailSlider' type='range' min='5' max='100' step='1' value='17' oninput='thumbnailsSliderChanged(this.value)' />	
+</f:subview>

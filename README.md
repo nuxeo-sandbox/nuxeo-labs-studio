@@ -18,6 +18,7 @@ Module | Description
 `listing-icon-both-types` | Display both the document-type and binary-type icon in a list view
 `pdf-preview-widget` | A widget that uses the [pdf.js](https://mozilla.github.io/pdf.js/) preview widget to display document previews
 `content-view-count` | A widget to display the total number of items in a Content View
+`content-view-thumbnail-size-slider` | A slider widget to resize thumbnails in Content View
 `email-templates` | Improved email templates for Nuxeo Studio
 
 ## Building
