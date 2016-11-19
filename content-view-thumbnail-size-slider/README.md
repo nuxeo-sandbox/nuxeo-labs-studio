@@ -1,6 +1,6 @@
 # About **content-view-thumbnail-size-slider**
 
-This example adds a count of the total number of results to all Content Views.
+This example adds a slider widget to all content views when in thumbnail layout.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Copy & Paste the content of `content-view-action-contrib.xml` in an XML Extensio
 
 ## Notes & Limitations
 
-N/A
+The slider value is saved in the browser local storage. In order to reset the value, you need to clear local storage in the browser.
 
 ## Support
 
