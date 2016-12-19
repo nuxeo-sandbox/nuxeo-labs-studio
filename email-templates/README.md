@@ -13,6 +13,10 @@ Preview | id | Theme | Comments
 
 Copy the content of the template HTML file to the corresponding object in your Studio configuration (Templates | Mail Templates). If the object does not exist, create a new one with the `id` listed above.
 
+## Tips
+
+Use `${Runtime.getProperty('nuxeo.url')}` to get your application logo, e.g. `<img src="${Runtime.getProperty('nuxeo.url')}/img/nuxeo_dam_logo.png" />`
+
 ## Support
 
 **These features are not part of the Nuxeo Production platform.**
