@@ -1,0 +1,5 @@
+<extension target="org.nuxeo.vision.core.service" point="configuration">
+    <configuration>
+        <pictureMapperChainName>javascript.NuxeoVisionPictureMapper</pictureMapperChainName>
+    </configuration>
+</extension>

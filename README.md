@@ -23,6 +23,7 @@ Module | Description
 `iframe-widget` | A generic iframe widget that can be used to display content from outside Nuxeo.
 `json-pretty-print` | Custom widget to display JSON text with pretty printing and colorization
 `listing-icon-both-types` | Display both the document-type and binary-type icon in a list view
+`nuxeo-vision-mappers` | Mappers for Nuxeo Vision plugin
 `pdf-preview-widget` | A widget that uses the [pdf.js](https://mozilla.github.io/pdf.js/) preview widget to display document previews
 `video-conversions` | A comprehensive list of video conversions
 
