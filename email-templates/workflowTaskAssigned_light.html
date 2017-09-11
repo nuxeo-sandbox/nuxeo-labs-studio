@@ -9,7 +9,15 @@
           <tr>
             <td align="center"
                 style="padding-top: 100px; padding-bottom: 50px;">
-              <img src="https://raw.githubusercontent.com/nuxeo-sandbox/nuxeo-labs-studio/master/email-templates/images/logo-light.png" />
+<!-- Allow support for emails sent from localhost; in this case you need to
+     point the image URL to something on the web because gmail won't display
+     images for localhost, for example -->
+<!-- Do not use ...index_of(...) > -1 because the > will close the tag. Use gt -->
+<#if (Runtime.getProperty('nuxeo.url')?index_of("localhost:8080")) gt -1>
+              <img width="300" src="https://raw.githubusercontent.com/nuxeo-sandbox/nuxeo-labs-studio/master/email-templates/images/logo-light.png" />
+<#else>
+              <img width="300" src="${Runtime.getProperty('nuxeo.url')}/img/mylogo.png" />
+</#if>
             </td>
           </tr>
           <tr>
@@ -21,6 +29,8 @@
           <tr>
             <td align="csenter"
                 style="padding-bottom: 50px; font-size: larger; color: #808080; text-align: justify;">
+<!-- Note: if you want the docUrl to point to Web UI please see:
+     https://doc.nuxeo.com/nxdoc/how-to-customize-email-templates/#making-the-document-links-in-notification-emails-point-to-the-web-ui -->
               Hi ${recipients[0]}. ${workflowInitiator} has assigned a task to you. The Project <a style="color: #00adff; text-decoration: none;"
                   href="${docUrl}">${htmlEscape(docTitle)}</a> requires your attention.
             </td>
@@ -28,6 +38,8 @@
           <tr>
             <td align="center"
                 style="padding-bottom: 50px;">
+<!-- Note: if you want the docUrl to point to Web UI please see:
+     https://doc.nuxeo.com/nxdoc/how-to-customize-email-templates/#making-the-document-links-in-notification-emails-point-to-the-web-ui -->
               <a style="background:#00adff; color: #fff;text-shadow: 1px 1px 2px #333333; text-decoration: none; border-radius: 5px;padding: 12px 24px;text-align: center; display: inline-block;"
                   href="${docUrl}">VIEW DOCUMENT</a>
             </td>
@@ -49,5 +61,3 @@
     </center>
   </div>
 </body>
-
-<html>
