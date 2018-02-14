@@ -1,0 +1,79 @@
+<!--
+`retention-widget`
+@group Nuxeo UI
+@element retention-widget
+-->
+<dom-module id="retention-widget">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      *[role=widget] {
+        padding: 5px;
+      }
+
+      /*
+      ** Set back to default values.
+      ** These are overridden in themes/base.html
+      */
+
+      paper-card {
+        padding: 0;
+        border-radius: 2px;
+      }
+
+      paper-card {
+        --paper-card-content: {
+          padding-top: 0;
+        }
+        ;
+        --paper-card-header-text: {
+          margin-bottom: 0;
+        }
+        ;
+      }
+
+      .chip {
+        background-color: #7e90a5;
+        border-radius: 3px;
+        color: #fff;
+        padding: 0.06em 0.3em;
+        text-transform: uppercase;
+        vertical-align: baseline;
+        white-space: nowrap;
+        margin-left: 5px;
+      }
+    </style>
+
+    <template is="dom-if"
+              if="[[_isRecord(document)]]">
+      <paper-card heading="WARNING: READ-ONLY RECORD">
+        <div class="card-content layout horizontal">
+          <div>Retain until </div>
+          <div class="chip">[[formatDate(document.properties.record:max_retention_at)]]</div>
+        </div>
+      </paper-card>
+    </template>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'retention-widget',
+      behaviors: [Nuxeo.LayoutBehavior],
+      properties: {
+
+        //You can use either @schema or @doctype annotation in your model
+        /**
+         * @schema dublincore
+         */
+        document: {
+          type: Object
+        }
+      },
+
+      _isRecord: function(document) {
+        return document.facets.indexOf("Record") > -1;
+      }
+
+    });
+  </script>
+</dom-module>

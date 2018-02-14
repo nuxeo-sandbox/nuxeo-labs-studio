@@ -1,0 +1,56 @@
+<!--
+`retention-action`
+@group Nuxeo UI
+@element retention-action
+-->
+<dom-module id="retention-action">
+  <template>
+    <style>
+      /* Add your custom styles here */
+    </style>
+
+    <template is="dom-if"
+              if="[[_isNotRecord(document)]]">
+      <nuxeo-operation-button icon="[[icon]]"
+                              label="[[label]]"
+                              operation="[[operation]]"
+                              response="{{operationResponse}}"
+                              input="{{document}}"
+                              event="document-updated">
+      </nuxeo-operation-button>
+    </template>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'retention-action',
+      properties: {
+
+        document: {
+          type: Object
+        },
+
+        label: {
+          type: String,
+          value: 'Stamp Record'
+        },
+
+        icon: {
+          type: String,
+          value: 'icons:archive'
+        },
+
+        operation: {
+          type: String,
+          value: 'Retention_AddToFile'
+        }
+      },
+
+      _isNotRecord: function(document) {
+        return document.facets.indexOf("Record") === -1;
+      }
+
+    });
+  </script>
+</dom-module>

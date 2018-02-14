@@ -1,0 +1,36 @@
+<extension target="org.nuxeo.ecm.retention.RetentionService" point="rules">
+
+  <rule>
+    <id>fileRetentionWithReminder</id>
+    <begin-condition expression="document.getType()=='File'"></begin-condition>
+    <begin-delay></begin-delay>
+    <retention-duration>P1Y</retention-duration>
+    <retention-reminder-days>3</retention-reminder-days>
+    <begin-action>Document.Lock</begin-action>
+    <end-action>Document.Delete</end-action>
+    <end-condition expression=""></end-condition>
+  </rule>
+
+    <rule>
+    <id>pictureRetentionWithReminder</id>
+    <begin-condition expression="document.getType()=='Picture'"></begin-condition>
+    <begin-delay></begin-delay>
+    <retention-duration>P1Y</retention-duration>
+    <retention-reminder-days>3</retention-reminder-days>
+    <begin-action>Document.Lock</begin-action>
+    <end-action>Document.Delete</end-action>
+    <end-condition expression=""></end-condition>
+  </rule>
+
+    <rule>
+    <id>videoRetentionWithReminder</id>
+    <begin-condition expression="document.getType()=='Video'"></begin-condition>
+    <begin-delay></begin-delay>
+    <retention-duration>P1Y</retention-duration>
+    <retention-reminder-days>3</retention-reminder-days>
+    <begin-action>Document.Lock</begin-action>
+    <end-action>Document.Delete</end-action>
+    <end-condition expression=""></end-condition>
+  </rule>
+
+</extension>

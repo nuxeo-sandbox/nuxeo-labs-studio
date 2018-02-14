@@ -25,6 +25,7 @@ Module | Description
 `listing-icon-both-types` | Display both the document-type and binary-type icon in a list view
 `nuxeo-vision-mappers` | Mappers for Nuxeo Vision plugin
 `pdf-preview-widget` | A widget that uses the [pdf.js](https://mozilla.github.io/pdf.js/) preview widget to display document previews
+`retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
 `video-conversions` | A comprehensive list of video conversions
 
 ## Building
