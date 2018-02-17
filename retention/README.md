@@ -17,7 +17,8 @@ Note: you'll probably want to install the operations from `nuxeo-retention` in y
 * Configure a WebUI action that uses `retention-action.html`
   * You need to specify the operation to call in the binding, e.g. `<retention-action operation="Retention_AddToFile" document="[[document]]"></retention-action>`
   * A sample chain is included in `Retention_AddToFile.yml`
-* Add `<retention-widget>`'s to your layouts to display record data if desired
+* Add `<retention-widget>`'s to your layouts to display record data if desired for example:
+  * `<retention-widget document="[[document]]"></retention-widget>`
 
 # Usage
 
