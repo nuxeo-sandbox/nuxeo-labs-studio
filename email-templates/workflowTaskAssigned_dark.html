@@ -14,7 +14,7 @@
      images for localhost, for example -->
 <!-- Do not use ...index_of(...) > -1 because the > will close the tag. Use gt -->
 <#if (Runtime.getProperty('nuxeo.url')?index_of("localhost:8080")) gt -1>
-              <img width="300" src="https://raw.githubusercontent.com/nuxeo-sandbox/nuxeo-labs-studio/master/email-templates/images/logo-light.png" />
+              <img width="300" src="https://raw.githubusercontent.com/nuxeo-sandbox/nuxeo-labs-studio/master/email-templates/images/logo-dark.png" />
 <#else>
               <img width="300" src="${Runtime.getProperty('nuxeo.url')}/img/mylogo.png" />
 </#if>
