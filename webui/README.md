@@ -1,6 +1,6 @@
 # About **nuxeo-labs-studio**
 
-This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/). Some modules are for JSF, some are for WebUI, and others (at the root level) are unrelated to the UI.
+This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/) for use with WebUI.
 
 ## Contributing
 
@@ -10,10 +10,7 @@ Each new module should be created in a new folder. You should include a readme w
 
 Module | Description
 --- | ---
-`convert-date-timestamp` | Javascript to convert a Nuxeo Date into a timestamp that is suitable for NXQL.
-`email-templates` | Improved email templates for Nuxeo Studio
-`nuxeo-vision-mappers` | Mappers for Nuxeo Vision plugin
-`video-conversions` | A comprehensive list of video conversions
+`retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
 
 ## Building
 
