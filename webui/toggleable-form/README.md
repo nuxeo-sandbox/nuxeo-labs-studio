@@ -1,23 +1,14 @@
-# About **nuxeo-labs-studio**
+# About
 
-This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/) for use with WebUI.
+WebUI Element to allow "inline" metadata editing. Consists of a `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate.
 
-## Contributing
+# Installation
 
-Each new module should be created in a new folder. You should include a readme with your module to explain how it works. You should update this file with a one sentence explanation of the module.
+* Install `toggleable-form.html` in your WebUI resources and import them in your bundle
+* Add `<toggleable-form>`'s to your layouts, for example:
+  * `<toggleable-form document="[[document]]" title="[[document.properties.dc:title]]"></toggleable-form>`
 
-## Sub-Module Organization
-
-Module | Description
---- | ---
-`retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
-`toggleable-form` | Toggable `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate.
-
-## Building
-
-There is nothing to build. Each module generally has a custom template or XML Extension that you may add via Nuxeo Studio.
-
-## Support
+# Support
 
 **These features are not part of the Nuxeo Production platform.**
 
@@ -25,13 +16,11 @@ These solutions are provided for inspiration and we encourage customers to use t
 
 This is a moving project (no API maintenance, no deprecation process, etc.) If any of these solutions are found to be useful for the Nuxeo Platform in general, they will be integrated directly into platform, not maintained here.
 
-
-## Licensing
+# Licensing
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-
-## About Nuxeo
+# About Nuxeo
 
 Nuxeo dramatically improves how content-based applications are built, managed and deployed, making customers more agile, innovative and successful. Nuxeo provides a next generation, enterprise ready platform for building traditional and cutting-edge content oriented applications. Combining a powerful application development environment with SaaS-based tools and a modular architecture, the Nuxeo Platform and Products provide clear business value to some of the most recognizable brands including Verizon, Electronic Arts, Sharp, FICO, the U.S. Navy, and Boeing. Nuxeo is headquartered in New York and Paris.
 
