@@ -8,6 +8,8 @@ Note that thile the data is contrived, the metics and analytics *are* data-drive
 
 # Configuration
 
+## Modeler
+
 * Create a Vocabulary for metrics units
   * id = `trk_metrics_units`
   * *id/label - order*
@@ -25,7 +27,12 @@ Note that thile the data is contrived, the metics and analytics *are* data-drive
   * `completion_start` - Date
   * `completion_units` - Directory bound to `trk_metrics_units` - default `ms`
 
-## Installation
+## Designer
+
+* Translation keys:
+  * app.title.admin.trkMetricsButtons <- title to display when the Metrics Setup screen is displayed
+
+# Installation
 
 1. Install TRK_METRICS.xml as an XML Extension
 2. Install the scripts in the `automation` folder as Automation Scripts
@@ -33,7 +40,7 @@ Note that thile the data is contrived, the metics and analytics *are* data-drive
 4. Modify `trk_GenerateData_Docs` to suit your use case
 5. Modify `trk-metrics-analytics-layout.html` with the URL of your Kibana dashboard
 
-## Support
+# Support
 
 **These features are not part of the Nuxeo Production platform.**
 
@@ -41,11 +48,11 @@ These solutions are provided for inspiration and we encourage customers to use t
 
 This is a moving project (no API maintenance, no deprecation process, etc.) If any of these solutions are found to be useful for the Nuxeo Platform in general, they will be integrated directly into platform, not maintained here.
 
-## Licensing
+# Licensing
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-## About Nuxeo
+# About Nuxeo
 
 Nuxeo dramatically improves how content-based applications are built, managed and deployed, making customers more agile, innovative and successful. Nuxeo provides a next generation, enterprise ready platform for building traditional and cutting-edge content oriented applications. Combining a powerful application development environment with SaaS-based tools and a modular architecture, the Nuxeo Platform and Products provide clear business value to some of the most recognizable brands including Verizon, Electronic Arts, Sharp, FICO, the U.S. Navy, and Boeing. Nuxeo is headquartered in New York and Paris.
 
