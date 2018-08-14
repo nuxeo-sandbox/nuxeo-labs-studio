@@ -5,7 +5,7 @@ Module for generating data to be used in a Kibana dashboard, and displayed in th
 # Configuration
 
 * Create a Vocabulary for metrics units
-  * `trk_metrics_units`
+  * id = `trk_metrics_units`
   * *id/label - order*
   * ms - 0
   * secs - 1
