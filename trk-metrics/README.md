@@ -2,25 +2,32 @@
 
 Module for generating data to be used in a Kibana dashboard, and displayed in the "Analytics" are of Web UI.
 
-# TODO
+# Configuration
 
-* schema for metrics data
-  * trk_metrics
-  * prefix trk
-  * completion_duration integer
-  * completion_end date
-  * completion_start date
-  * completion_units Directory
-* Directory for metrics units
-  * ms 0
-  * secs 1
-  * mins 2
-  * hours 3
-  * days 4
+* Create a Vocabulary for metrics units
+  * `trk_metrics_units`
+  * *id/label - order*
+  * ms - 0
+  * secs - 1
+  * mins - 2
+  * hours - 3
+  * days - 4
+
+* Create a schema for metrics data
+  * id = `trk_metrics`
+  * prefix = `trk`
+  * `completion_duration` - Integer
+  * `completion_end` - Date
+  * `completion_start` - Date
+  * `completion_units` - Directory bound to `trk_metrics_units` - default `ms`
 
 ## Installation
 
-
+1. Install TRK_METRICS.xml as an XML Extension
+2. Install the scripts in the `automation` folder as Automation Scripts
+3. Install the content in the `ui` folder as Resources in Designer
+4. Modify `trk_GenerateData_Docs` to suit your use case
+5. Modify `trk-metrics-analytics-layout.html` with the URL of your Kibana dashboard
 
 ## Support
 
