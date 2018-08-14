@@ -39,10 +39,11 @@ function run(input, params) {
     }
   } while (existingDocs.length < MAX_DOCS);
 
-  // Update metrics data for each doc.
+  // Create date offsets...
   var totalDocs = existingDocs.length;
 
   // Create a range of decreasing offsets to calculate start dates.
+  // Start dates are beteen 2 weeks and 1 year ago...
   // Now - (14 - 365 days)
   var startDateOffsets = [];
   var jj = 0;
@@ -54,8 +55,9 @@ function run(input, params) {
   });
 
   // Create a range of decreasing offsets to calculate end dates.
+  // End dates are 21 to 42 days after the start date, but decreasing over time
+  // exponentially.
   // Start date + 21 to 42 days but decreasing over time.
-  // This is based on an exponential graph.
   var durationMax = 42;
   var durationMin = 21;
   var denominator = Math.pow(totalDocs, 2) / (durationMax - durationMin);
@@ -67,6 +69,7 @@ function run(input, params) {
     endDateOffsets.push(offset);
   }
 
+  // Update metrics data for each doc.
   for (jj = 0; jj < totalDocs; jj++) {
     if ((jj % 20) === 0) {
       Console.log("Updating Doc " + jj + "/" + totalDocs);
@@ -96,9 +99,11 @@ function run(input, params) {
     // Set end date
     var endDate = startDate.days(endDateOffsets[jj]);
     properties['trk:completion_end'] = endDate.format("yyyy-MM-dd");
-    // End date - random between -5 to 5 days
+    // Set due date
     var dueDateOffset = randomValueInArray(DUE_DATE_OFFSETS, DUE_DATE_OFFSETS_MAX);
     var dueDate = endDate.days(dueDateOffset);
+    properties['trk:due_date'] = dueDate.format("yyyy-MM-dd");
+    // Set duration
     var duration = endDate.time - startDate.time;
     properties['trk:completion_duration'] = duration;
 
