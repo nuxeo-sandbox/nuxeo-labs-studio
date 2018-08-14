@@ -5,7 +5,8 @@ function run(input, params) {
   var titlePrefix = "DOC-";
   var docType = "File";
 
-  var DOC_CATEGORIES = ['Bodily', 'Property', 'Windshield'];
+  // For dc:nature
+  var DOC_CATEGORIES = ['article', 'certificate', 'report', 'memo'];
   var DOC_CATEGORIES_MAX = DOC_CATEGORIES.length - 1;
 
   var MAX_DOCS = 200;
@@ -72,9 +73,17 @@ function run(input, params) {
     }
 
     var currentDoc = existingDocs[jj];
+
     currentDoc = Document.AddFacet(
       currentDoc, {
         'facet': 'HiddenInNavigation',
+        'save': false
+      }
+    );
+
+    currentDoc = Document.AddFacet(
+      currentDoc, {
+        'facet': 'trk_metrics',
         'save': false
       }
     );
@@ -96,10 +105,10 @@ function run(input, params) {
     // == Add other properties you'd like to generate... =======================
     // random amount
     var amount = randomForIntegers(1, 50) * 100;
-    properties['doc:docAmount'] = amount;
+    properties['dc:description'] = "This File cost " + amount;
     // random type
     var docCategory = randomValueInArray(DOC_CATEGORIES, DOC_CATEGORIES_MAX);
-    properties['doc:docCategory'] = docCategory;
+    properties['dc:nature'] = docCategory;
 
     currentDoc = Document.Update(
       currentDoc, {
