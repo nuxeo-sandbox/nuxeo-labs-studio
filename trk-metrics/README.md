@@ -4,7 +4,7 @@ Module for generating data to be used in a Kibana dashboard, and displayed in th
 
 This module supports a "story" that the duration of content with completion dates decreases over time, because Nuxeo makes things more efficient. It uses a exponential function, with some jiggle, to create this trend.
 
-Note that thile the data is contrived, the metics and analytics *are* data-driven.  In other words, if the application was filled with "real" data, the analtyics would still work, we just happen to be filling it with artificial data.
+Note that while the data is contrived, the metrics and analytics *are* data-driven.  In other words, if the application was filled with "real" data, the analtyics would still work, we just happen to be filling it with artificial data.
 
 # Installation
 
@@ -33,13 +33,13 @@ Note that thile the data is contrived, the metics and analytics *are* data-drive
   * `completion_end` - Date
   * `completion_start` - Date
   * `completion_units` - Directory bound to `trk_metrics_units` - default `ms`
-  * `due_date` -
+  * `due_date` - Date
     * Note: requires standalone ES to be useful
 
 ## Designer
 
 * Translation keys:
-  * app.title.admin.trkMetricsButtons <- title to display when the Metrics Setup screen is displayed
+  * `app.title.admin.trkMetricsButtons` <- title to display when the Metrics Setup screen is displayed
 
 ## Kibana
 
