@@ -83,7 +83,7 @@ function run(input, params) {
 
     currentDoc = Document.AddFacet(
       currentDoc, {
-        'facet': 'trk_metrics',
+        'facet': 'Metrics',
         'save': false
       }
     );
