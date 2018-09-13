@@ -14,9 +14,10 @@ Module | Description
 `email-templates` | Improved email templates for Nuxeo Studio
 `jsf` | older modules specific to JSF
 `nuxeo-vision-mappers` | Mappers for Nuxeo Vision plugin
-`trk-metrics` | A someone generic module for analytics; generate a bunch of data and visualize it
+`trk-metrics` | A somewhat generic module for analytics; generate a bunch of data and visualize it
 `video-conversions` | A comprehensive list of video conversions
 `web-ui` | modules specific to WebUI
+`workflow-status` | Workflow status listing
 
 ## Building
 
