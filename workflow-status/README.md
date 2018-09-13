@@ -2,7 +2,7 @@
 
 Module for workflow status layout displayed in the "Analytics" area of Web UI.
 
-![layout](workflow-status/workflow-status.png)
+![layout](workflow-status.png)
 
 Note: there is currently no data generation so this will only display real, running workflow tasks.
 
