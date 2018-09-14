@@ -8,7 +8,14 @@
       paper-card {
         padding: 0;
         border-radius: 2px;
+      }
+
+      .status-list {
         height: calc(100vh - 101px);
+      }
+
+      .status-bar {
+        height: 100px;
       }
 
       nuxeo-data-table {
@@ -22,11 +29,12 @@
 
     <nuxeo-page-provider id="tasksProvider" provider="workflow-status" page-size="20" enrichers="permissions" schemas="dublincore,common,uid,task" headers='{"X-NXfetch.document": "properties", "X-NXtranslate.directoryEntry": "label"}'></nuxeo-page-provider>
 
-    <paper-card class="layout flex">
+    <paper-card class="layout flex status-list">
       <div class="card-content">
+        <workflow-status-bar></workflow-status-bar>
 
         <!-- Table view -->
-        <nuxeo-data-table id="tasksTable" nx-provider="tasksProvider" class="results" settings-enabled="false" empty-label="[[emptyLabel]]" empty-label-when-filtered="[[emptyLabelWhenFiltered]]" on-row-clicked="_navigate">
+        <nuxeo-data-table id="tasksTable" nx-provider="tasksProvider" class="results" settings-enabled="false" empty-label="[[emptyLabel]]" empty-label-when-filtered="[[emptyLabelWhenFiltered]]">
 
           <nuxeo-data-table-column name="Workflow" field="nt:processId" sort-by="nt:processId">
             <template>
@@ -81,11 +89,19 @@
   <script>
     Polymer({
       is: 'workflow-status-layout',
+
       behaviors: [Nuxeo.LayoutBehavior],
+
       properties: {
         visible: {
           type: Boolean,
           observer: '_visibleChanged'
+        }
+      },
+
+      _visibleChanged: function (visible) {
+        if (visible) {
+          this._refresh();
         }
       },
 
@@ -95,21 +111,6 @@
 
       _refresh: function () {
         this.$.tasksTable.fetch();
-      },
-
-      _navigate: function (e) {
-        var detail;
-        if (e.detail.item) {
-          detail = {
-            doc: e.detail.item
-          };
-          this.navigateTo('browse', detail.doc.path);
-        } else {
-          detail = {
-            doc: e.model.item
-          };
-        }
-        this.fire('navigate', detail);
       },
 
       _getTaskTarget: function (item) {
