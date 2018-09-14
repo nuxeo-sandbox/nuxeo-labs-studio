@@ -9,6 +9,7 @@ Note: there is currently no data generation so this will only display real, runn
 # Installation
 
 1. Install WORKFLOW_STATUS.xml as an XML Extension
+1. Install the script in the `automation` folder as an Automation Script
 1. Install the content in the `ui` folder as Resources in Designer (including the subfolders)
 
 # Configuration
