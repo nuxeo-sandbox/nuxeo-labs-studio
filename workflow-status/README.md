@@ -18,7 +18,7 @@ Note: there is currently no data generation so this will only display real, runn
 
 * Create a Page Provider for workflow tasks
   * id: `workflow-status`
-  * filter: `ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState != 'deleted' AND ecm:currentLifeCycleState = 'opened' AND ecm:primaryType = 'RoutingTask'`
+  * filter: `ecm:currentLifeCycleState = 'opened' AND ecm:primaryType = 'RoutingTask'`
 
 # Usage
 
