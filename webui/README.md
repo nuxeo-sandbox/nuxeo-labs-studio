@@ -12,6 +12,8 @@ Module | Description
 --- | ---
 `retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
 `toggleable-form` | Toggable `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate.
+`trk-metrics` | A somewhat generic module for analytics; generate a bunch of data and visualize it
+`workflow-status` | Workflow status listing
 
 ## Building
 
