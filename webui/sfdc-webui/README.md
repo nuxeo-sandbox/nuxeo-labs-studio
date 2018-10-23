@@ -1,26 +1,28 @@
-# About **nuxeo-labs-studio**
+# About
 
-This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/) for use with WebUI.
+Simple layout to display Salesforce metadata when using [nuxeo-salesforce](https://doc.nuxeo.com/n/QMl). By default `nuxeo-salesforce` maps SFDC objects to Workspace documents (via adding a facet and schema). Therefore the default Workspace layout won't display any of the SFDC metadata. The layout included here can replace the default layout to display the metadata.
 
-## Contributing
+![layout](sfdc-webui.png)
 
-Each new module should be created in a new folder. You should include a readme with your module to explain how it works. You should update this file with a one sentence explanation of the module.
+# Installation
 
-## Sub-Module Organization
+1. Install WORKFLOW_STATUS.xml as an XML Extension
+1. Install the script in the `automation` folder as an Automation Script
+1. Install the content in the `ui` folder as Resources in Designer (including the subfolders)
 
-Module | Description
---- | ---
-`retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
-`sfdc-webui` | Simple changes to display Salesforce metadata when using [nuxeo-salesforce](https://doc.nuxeo.com/n/QMl)
-`toggleable-form` | Toggable `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate
-`trk-metrics` | A somewhat generic module for analytics; generate a bunch of data and visualize it
-`workflow-status` | Workflow status listing
+# Configuration
 
-## Building
+## Modeler
 
-There is nothing to build. Each module generally has a custom template or XML Extension that you may add via Nuxeo Studio.
+* Create a Page Provider for workflow tasks
+  * id: `workflow-status`
+  * filter: `ecm:currentLifeCycleState = 'opened' AND ecm:primaryType = 'RoutingTask'`
 
-## Support
+# Usage
+
+* Admin -> Analytics -> Workflow Status
+
+# Support
 
 **These features are not part of the Nuxeo Production platform.**
 
@@ -28,13 +30,11 @@ These solutions are provided for inspiration and we encourage customers to use t
 
 This is a moving project (no API maintenance, no deprecation process, etc.) If any of these solutions are found to be useful for the Nuxeo Platform in general, they will be integrated directly into platform, not maintained here.
 
-
-## Licensing
+# Licensing
 
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-
-## About Nuxeo
+# About Nuxeo
 
 Nuxeo dramatically improves how content-based applications are built, managed and deployed, making customers more agile, innovative and successful. Nuxeo provides a next generation, enterprise ready platform for building traditional and cutting-edge content oriented applications. Combining a powerful application development environment with SaaS-based tools and a modular architecture, the Nuxeo Platform and Products provide clear business value to some of the most recognizable brands including Verizon, Electronic Arts, Sharp, FICO, the U.S. Navy, and Boeing. Nuxeo is headquartered in New York and Paris.
 
