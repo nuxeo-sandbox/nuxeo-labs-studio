@@ -6,21 +6,11 @@ Simple layout to display Salesforce metadata when using [nuxeo-salesforce](https
 
 # Installation
 
-1. Install WORKFLOW_STATUS.xml as an XML Extension
-1. Install the script in the `automation` folder as an Automation Script
-1. Install the content in the `ui` folder as Resources in Designer (including the subfolders)
+* Install the content in the `ui` folder as Resources in Designer (including the subfolders)
 
-# Configuration
+-OR-
 
-## Modeler
-
-* Create a Page Provider for workflow tasks
-  * id: `workflow-status`
-  * filter: `ecm:currentLifeCycleState = 'opened' AND ecm:primaryType = 'RoutingTask'`
-
-# Usage
-
-* Admin -> Analytics -> Workflow Status
+* Copy the customization of `nuxeo-workspace-view-layout` into your desired layout
 
 # Support
 
