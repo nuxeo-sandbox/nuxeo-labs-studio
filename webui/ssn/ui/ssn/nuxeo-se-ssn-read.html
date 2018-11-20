@@ -20,7 +20,15 @@ limitations under the License.
 -->
 <!-- Example
   WARNING: Gourp list must be passed as JSON, with double quotes for strings, so:
-  <nuxeo-se-ssn-read document="[[document]]" ssn-field="person:ssn" allowed-groups='["grp1","grp2","grp3"]'></nuxeo-se-ssn-read>
+   <nuxeo-se-ssn-read document="[[document]]"
+                      ssn-field="person:ssn"
+                      allowed-groups='["grp1","grp2","grp3"]'></nuxeo-se-ssn-read>
+  once toggled, it is reset to "*****" after 8 seconds. This can be changed with hideAfter, expressed in seconds (not milliseconds):
+
+   <nuxeo-se-ssn-read document="[[document]]"
+                      ssn-field="person:ssn"
+                      allowed-groups='["grp1","grp2","grp3"]'
+                      hide-after="4"></nuxeo-se-ssn-read>
 -->
 <dom-module id="nuxeo-se-ssn-read">
 
@@ -86,6 +94,11 @@ limitations under the License.
       ssnVisibilityTooltip: {
         type: String,
         value: "Show value"
+      },
+
+      hideAfter: {
+        type: Number,
+        value: 8
       }
     },
 
@@ -127,12 +140,16 @@ limitations under the License.
         this.ssnToggleIcon = "icons:visibility-off";
         this.ssnVisibilityTooltip = "Hide Value";
 
-        // Auto-hide after 8 seconds
+        // Auto-hide after n seconds
+        let ms = 8000;
+        if(this.hideAfter && this.hideAfter > 0) {
+          ms = this.hideAfter * 1000;
+        }
         setTimeout(function() {
           if(this.ssnDisplayClear) {
             this._toggleSSNVisibility();
           }
-        }.bind(this), 8000);
+        }.bind(this), ms);
 
       } else {
         this.ssnToggleIcon = "icons:visibility";
