@@ -15,6 +15,7 @@ Module | Description
 `toggleable-form` | Toggable `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate
 `trk-metrics` | A somewhat generic module for analytics; generate a bunch of data and visualize it
 `workflow-status` | Workflow status listing
+`ssn` | Display Social Security Number (or not)
 
 ## Building
 
