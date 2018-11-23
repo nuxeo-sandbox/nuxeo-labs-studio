@@ -1,11 +1,16 @@
 # About
 
-Simple element that displays the value of a field holding a social security number:
+Elements that show/hide the value of a field holding a social security number:
 
-* By default, the value is obfuscated (********* instead of the clear value)
-* A button allows for toggling the display (display the value or the "*")
-  * Once displayed, it automatically hides the value after 8 seconds
-* `administrators` and users members of `allowedGroups` can see the widget. Others see nothing (not even ******)
+* In a _read_ layout, use `nuxeo-se-ssn-read`:
+  * The value is obfuscated (********* instead of the clear value)
+  * A button allows for toggling the display (display the value or the "*")
+    * Once displayed, it automatically hides the value after 8 seconds
+  * `administrators` and users members of `allowedGroups` can see the widget. Others see nothing (not even ******)
+
+* In an _edit_ layout, use `nuxeo-se-ssn-edit`:
+  * The inoput type is `password` by default
+  * A button allows for toggling the type to `text`
 
 
 # Installation
@@ -15,17 +20,34 @@ Simple element that displays the value of a field holding a social security numb
 
 ```
 <link rel="import" href="ssn/nuxeo-se-ssn-read.html">
+<link rel="import" href="ssn/nuxeo-se-ssn-edit">
 ```
 
 # Usage
 Just use the element and its required attributes: `document` and `ssnField`. To allow non admin users to see the value, also use `allowedGroups`. The later must be passed as JSON, which means double quotes inside, single quote outside:
 
 ```
+. . . other elements and widgets . . .
+
 <nuxeo-se-ssn-read document="[[document]]"
                    ssn-field="person:ssn"
                    allowed-groups='["grp1","grp2","grp3"]'></nuxeo-se-ssn-read>
-```
 
+. . . other elements and widgets . . .
+```
+For nuxeo-se-ssn-read, an optional `hide-after` property can be set: The number of seconds to wait before hidding the value once it is showed (default value is 8 seconds)
+
+**WARNING** When using the `edit` element, the caller must use the double binding notation to the document, `{{document}}`, to allow the `document` object to be modified in the parent element:
+
+```
+. . . other elements and widgets . . .
+
+<nuxeo-se-ssn-edit document="{{document}}"
+                   ssn-field="person:ssn"
+                   allowed-groups='["grp1","grp2","grp3"]'></nuxeo-se-ssn-edit>
+
+. . . 
+```
 
 # Support
 
