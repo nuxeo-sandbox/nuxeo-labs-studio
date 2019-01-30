@@ -1,0 +1,50 @@
+<!--
+`nuxeo-telestreamjob-20181203172438532-accept-reject-task-layout`
+@group Nuxeo UI
+@element nuxeo-telestreamjob-20181203172438532-accept-reject-task-layout
+-->
+<dom-module id="nuxeo-telestreamjob-20181203172438532-accept-reject-task-layout">
+  <template>
+    <style>
+      *[role=widget] {
+        padding: 5px;
+      }
+    </style>
+    <nuxeo-directory-suggestion role="widget" value="{{task.variables.Configuration}}" label="Configuration" directory-name="TelestreamWorkflows" min-chars="1"></nuxeo-directory-suggestion>
+
+    <nuxeo-input role="widget" value="{{task.variables.JobName}}" label="Job Name" type="text"></nuxeo-input>
+
+    <!--
+    <nuxeo-document-suggestion role="widget" value="{{task.variables.Media}}" label="Media" multiple="true" min-chars="1"></nuxeo-document-suggestion>
+-->
+    
+    <nuxeo-input role="widget" value="{{task.variables.Priority}}" label="Priority" type="number"></nuxeo-input>
+
+    <nuxeo-directory-suggestion value="{{task.variables.Destination}}" label="Destination" directory-name="VideoTransformation_Destination" role="widget" min-chars="0"></nuxeo-directory-suggestion>
+
+  </template>
+
+  <script>
+  Polymer({
+    is: 'nuxeo-telestreamjob-20181203172438532-accept-reject-task-layout',
+    behaviors: [Nuxeo.LayoutBehavior],
+    properties: {
+
+      /**
+         * @task var_TelestreamJob-20181203172438532-accept-reject-task
+         */
+      task: {
+        type: Object,
+      },
+
+      /**
+         * @schema dublincore
+         */
+      document: {
+        type: Object,
+      },
+
+    }
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,40 @@
+<!--
+`nuxeo-telestreamjob-20190107155124254-accept-reject-task-layout`
+@group Nuxeo UI
+@element nuxeo-telestreamjob-20190107155124254-accept-reject-task-layout
+-->
+<dom-module id="nuxeo-telestreamjob-20190107155124254-accept-reject-task-layout">
+  <template>
+    <style>
+      *[role=widget] {
+        padding: 5px;
+      }
+    </style>
+    <nuxeo-textarea role="widget" value="{{task.variables.Parameters}}" label="Parameters" type="text" rows="5"></nuxeo-textarea>
+
+    </template>
+
+  <script>
+  Polymer({
+    is: 'nuxeo-telestreamjob-20190107155124254-accept-reject-task-layout',
+    behaviors: [Nuxeo.LayoutBehavior],
+    properties: {
+
+      /**
+         * @task var_TelestreamJob-20190107155124254-accept-reject-task
+         */
+      task: {
+        type: Object,
+      },
+
+      /**
+         * @schema dublincore
+         */
+      document: {
+        type: Object,
+      },
+
+    }
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,67 @@
+<!--
+`nuxeo-telestreamjob-20181203172511000-approve-task-layout`
+@group Nuxeo UI
+@element nuxeo-telestreamjob-20181203172511000-approve-task-layout
+-->
+<dom-module id="nuxeo-telestreamjob-20181203172511000-approve-task-layout">
+  <template>
+    <style>
+      *[role=widget] {
+        padding: 5px;
+      }
+    </style>
+    <nuxeo-document-suggestion value="[[task.variables.Configuration]]" label="Configuration" readonly="true" role="widget"></nuxeo-document-suggestion>
+
+    <div role="widget"><label>Job ID</label><div>[[task.variables.JobID]]</div>
+    </div>
+
+    <div role="widget"><label>Job Name</label><div>[[task.variables.JobName]]</div>
+    </div>
+
+    <div role="widget"><label>Job State</label><div>[[task.variables.JobState]]</div>
+    </div>
+
+    <nuxeo-document-suggestion value="[[task.variables.Media]]" label="Media" readonly="true" role="widget" multiple="true"></nuxeo-document-suggestion>
+
+    <div role="widget"><label>Parameters</label><div>[[task.variables.Parameters]]</div>
+    </div>
+
+    <div role="widget"><label>Priority</label><div>[[task.variables.Priority]]</div>
+    </div>
+
+    <div role="widget">
+      <label>Created</label>
+      <div>[[formatDate(task.created)]]</div>
+    </div>
+
+    <div role="widget">
+      <label>Due Date</label>
+      <div>[[formatDate(task.dueDate)]]</div>
+    </div>
+
+  </template>
+
+  <script>
+  Polymer({
+    is: 'nuxeo-telestreamjob-20181203172511000-approve-task-layout',
+    behaviors: [Nuxeo.LayoutBehavior],
+    properties: {
+
+      /**
+         * @task var_TelestreamJob-20181203172511000-approve-task
+         */
+      task: {
+        type: Object,
+      },
+
+      /**
+         * @schema dublincore
+         */
+      document: {
+        type: Object,
+      },
+
+    }
+  });
+  </script>
+</dom-module>

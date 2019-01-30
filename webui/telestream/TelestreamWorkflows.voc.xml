@@ -1,0 +1,13 @@
+<vocabulary id="TelestreamWorkflows" version="1.2">
+  <content>
+    <string-array>
+      <string>0</string>
+      <string>Default Workflow</string>
+      <string>0</string>
+      <string>0</string>
+    </string-array>
+  </content>
+  <isHierarchical>false</isHierarchical>
+  <numberOfLevels>0</numberOfLevels>
+  <createTablePolicy>on_missing_columns</createTablePolicy>
+</vocabulary>

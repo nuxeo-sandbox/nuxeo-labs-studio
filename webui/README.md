@@ -16,6 +16,8 @@ Module | Description
 `trk-metrics` | A somewhat generic module for analytics; generate a bunch of data and visualize it
 `workflow-status` | Workflow status listing
 `ssn` | Display Social Security Number (or not)
+`telestream` | Submit and retrieve jobs from the Telestream video encoding application
+`video-thumbnail` | Set the thumbnail and poster for a video based on a storyboard image
 
 ## Building
 
