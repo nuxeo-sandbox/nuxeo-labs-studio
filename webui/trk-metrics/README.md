@@ -11,7 +11,7 @@ Note that while the data is contrived, the metrics and analytics *are* data-driv
 1. Install TRK_METRICS.xml as an XML Extension
 2. Install the scripts in the `automation` folder as Automation Scripts
 3. Install the content in the `ui` folder as Resources in Designer (including the subfolders)
-4. Modify `trk_GenerateData_Docs` to suit your use case
+4. (optional) Modify `trk_GenerateData_Docs` to suit your use case; by default it creates `File` documents with metrics data, but you can choose a different document type.
 
 # Configuration
 
@@ -45,6 +45,8 @@ Note that while the data is contrived, the metrics and analytics *are* data-driv
 
 Note: this is not an explanation of how to use Kibana, it's just a list of things that need to be created for the default implementation. Kibana how-tos are documented elsewhere.
 
+* Format fields for human readability
+  * Set the `trk:completion_duration` field format to `Duration`, output format to `Human-Readible`, the input format to `Milliseconds`
 * Create a query to locate the metrics documents. There are several ways you can do this:
   * Filter for the `Metrics` facet
   * Filter for the duration `trk\:completion_duration > 0`
