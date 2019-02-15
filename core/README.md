@@ -1,6 +1,6 @@
 # About **nuxeo-labs-studio**
 
-This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/) for use with WebUI.
+This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/) Advanced Settings.
 
 ## Contributing
 
@@ -10,15 +10,7 @@ Each new module should be created in a new folder. You should include a readme w
 
 Module | Description
 --- | ---
-`retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
-`sfdc-webui` | Simple changes to display Salesforce metadata when using [nuxeo-salesforce](https://doc.nuxeo.com/n/QMl)
-`toggleable-form` | Toggable `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate
-`trk-metrics` | A somewhat generic module for analytics; generate a bunch of data and visualize it
-`workflow-status` | Workflow status listing
-`sensitive-data` | Use this widget element with [nuxeo-dlp-scanner](https://github.com/nuxeo-sandbox/nuxeo-dlp-scanner) to display details of the sensitive data
-`ssn` | Display Social Security Number (or not)
-`telestream` | Submit and retrieve jobs from the Telestream video encoding application
-`video-thumbnail` | Set the thumbnail and poster for a video based on a storyboard image
+`saml-user-mapping` | Map SAML attributes to Nuxeo Principal account settings
 
 ## Building
 
