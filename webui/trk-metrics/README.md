@@ -2,7 +2,9 @@
 
 Module for generating data to be used in a Kibana dashboard, and displayed in the "Analytics" area of Web UI.
 
-This module supports a "story" that the duration of content with completion dates decreases over time, because Nuxeo makes things more efficient. It uses a exponential function, with some jiggle, to create this trend.
+This module supports a "story" that the duration of content with completion dates decreases over time, because Nuxeo makes things more efficient. It uses a exponential function, with some jiggle, to create this trend. Note the "Project Duration" graph:
+
+![Dashboard Example](example.png)
 
 Note that while the data is contrived, the metrics and analytics *are* data-driven.  In other words, if the application was filled with "real" data, the analtyics would still work, we just happen to be filling it with artificial data.
 
@@ -66,7 +68,8 @@ Note: this is not an explanation of how to use Kibana, it's just a list of thing
     * X-axis Date Histogram with `trk:completion_end`, interval `Daily`
     * Split series by "category"
 * Create a dashboard with your visualizations
-* Set the Dashboard URL in Designer in trk-metrics-analytics-layout.html
+* From the Dashboard screen, click the "Share" button; copy the URL from the embed code
+* In `nuxeo.conf`, assign the URL to `trk.metrics.kibana.url`
 
 # Usage
 
