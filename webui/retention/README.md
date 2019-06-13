@@ -1,5 +1,7 @@
 # About
 
+*IMPORTANT NOTE*: [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention) now includes UI and config so you shouldn't need this.
+
 Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
 
 * `retention.xml` has some sample retention rules
