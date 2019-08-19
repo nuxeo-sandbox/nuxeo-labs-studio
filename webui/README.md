@@ -10,6 +10,7 @@ Each new module should be created in a new folder. You should include a readme w
 
 Module | Description
 --- | ---
+`google-vision-ocr` | Automation script that extracts text from image-based PDFs with Google Vision.
 `retention` | Helpers to get you started with [nuxeo-retention](https://github.com/nuxeo-sandbox/nuxeo-retention)
 `sfdc-webui` | Simple changes to display Salesforce metadata when using [nuxeo-salesforce](https://doc.nuxeo.com/n/QMl)
 `toggleable-form` | Toggable `paper-card` that displays the Metadata or Edit layout of the passed document, as appropriate

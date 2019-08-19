@@ -1,26 +1,21 @@
 # About
 
-Module for communicating with Telestream within a Nuxeo workflow.
+Module for extracting text from an image-based PDF with Google Vision.
 
 # Installation
 
-1. Install all of the automation scripts `Telestream_*.js`
-2. Create an empty vocabulary named `TelestreamWorkflows`
-3. Create the Telestream workflow with the provided configurations, may require git access to the project
+1. Install all of the automation scripts.
+2. Add the OCR facet and type contribution
 
 # Configuration
 
-## Telestream
+## Vision
 
-Specify the `telestream.url` in your `nuxeo.conf` file.
+Configure `nuxeo-vision` with the Google Vision provider.
 
-## Workflows
+## Usage
 
-Use the `Telestream_Workflows` automation endpoint to populate the `TelestreamWorkflows` vocabulary.  This only needs to be done once (or whenever the workflows are updated).  Recommend a scheduled job for a production environment.
-
-# Usage
-
-* Start "Telestream Job" workflow
+Use the `ExtractDocumentText` automation endpoint to populate the `ocr` facet properties.  The operation works with image-based PDFs.
 
 # Support
 
