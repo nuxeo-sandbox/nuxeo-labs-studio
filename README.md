@@ -1,3 +1,5 @@
+> :warning: This repository is obsolete since August 2019, please now refer to the Github [Nuxeo Studio Custom Elements](https://github.com/nuxeo/nuxeo-studio-custom-elements) repository.
+
 # About **nuxeo-labs-studio**
 
 This repository contains the necessary files and instructions too add certain features to your [Nuxeo](http://www.nuxo.com) application via [Nuxeo Studio](http://www.nuxeo.com/products/studio/). Some modules are for JSF, some are for WebUI, and others (at the root level) are unrelated to the UI.
