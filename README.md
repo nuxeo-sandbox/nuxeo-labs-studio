@@ -1,4 +1,4 @@
-> :warning: This repository is obsolete since August 2019, please now refer to the Github [Nuxeo Studio Custom Elements](https://github.com/nuxeo/nuxeo-studio-custom-elements) repository.
+:warning: **This repository is substituted by the new [Nuxeo Studio Custom Elements](https://github.com/nuxeo/nuxeo-studio-custom-elements) repository since August 2019.** Consequently, do not pull your contributions in this repository unless you don't want to share it.
 
 # About **nuxeo-labs-studio**
 
