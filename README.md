@@ -1,4 +1,4 @@
-:warning: **This repository is substituted by the new [Nuxeo Studio Custom Elements](https://github.com/nuxeo/nuxeo-studio-custom-elements) repository since August 2019.** Consequently, do not pull your contributions in this repository unless you don't want to share it.
+:warning: **This repository is substituted by the new [Nuxeo Studio Community Cookbook](https://github.com/nuxeo/nuxeo-studio-community-cookbook) repository since August 2019.** Consequently, do not put your contributions in this repository.
 
 # About **nuxeo-labs-studio**
 
@@ -23,7 +23,7 @@ Module | Description
 
 There is nothing to build. Each module generally has a custom template or XML Extension that you may add via Nuxeo Studio.
 
-## Support
+# Support
 
 **These features are not part of the Nuxeo Production platform.**
 
@@ -31,14 +31,18 @@ These solutions are provided for inspiration and we encourage customers to use t
 
 This is a moving project (no API maintenance, no deprecation process, etc.) If any of these solutions are found to be useful for the Nuxeo Platform in general, they will be integrated directly into platform, not maintained here.
 
+# License
 
-## Licensing
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+# About Nuxeo
 
+Nuxeo Platform is an open source Content Services platform, written in Java. Data can be stored in both SQL & NoSQL databases.
 
-## About Nuxeo
+The development of the Nuxeo Platform is mostly done by Nuxeo employees with an open development model.
 
-Nuxeo dramatically improves how content-based applications are built, managed and deployed, making customers more agile, innovative and successful. Nuxeo provides a next generation, enterprise ready platform for building traditional and cutting-edge content oriented applications. Combining a powerful application development environment with SaaS-based tools and a modular architecture, the Nuxeo Platform and Products provide clear business value to some of the most recognizable brands including Verizon, Electronic Arts, Sharp, FICO, the U.S. Navy, and Boeing. Nuxeo is headquartered in New York and Paris.
+The source code, documentation, roadmap, issue tracker, testing, benchmarks are all public.
 
-More information is available at [www.nuxeo.com](http://www.nuxeo.com).
+Typically, Nuxeo users build different types of information management solutions for [document management](https://www.nuxeo.com/solutions/document-management/), [case management](https://www.nuxeo.com/solutions/case-management/), and [digital asset management](https://www.nuxeo.com/solutions/dam-digital-asset-management/), use cases. It uses schema-flexible metadata & content models that allows content to be repurposed to fulfill future use cases.
+
+More information is available at [www.nuxeo.com](https://www.nuxeo.com).
